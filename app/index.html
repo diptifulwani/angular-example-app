@@ -21,7 +21,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <!-- <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -46,17 +46,29 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+    <div class="header" style="border-bottom:0px;">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="col-xs-12 dropdown">
+          <i class="fa fa-bars fa-3x" aria-expanded="true" data-toggle="dropdown" data-target="#js-navbar-collapse" id="dropdownMenu1"></i>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li class="active"><a ui-sref="surveys">Surveys</a></li>
+              <li><a ui-sref="dashboard">Dashboard</a></li>            
+            </ul>
+        </div>
       </div>
     </div>
+
+    <div class="container-fluid">
+    <div ui-view=""></div>
+    </div>
+
+    <!-- <div class="footer">
+      <div class="container-fluid">
+        <p><span class="glyphicon glyphicon-heart"></span> from the <> team</p>
+      </div>
+    </div> -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -81,13 +93,25 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
+    <script src="https://use.fontawesome.com/274791359e.js"></script>    
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/surveys.js"></script>
+        <script src="scripts/controllers/create.js"></script>
+        <script src="scripts/controllers/edit.js"></script>
+        <script src="scripts/controllers/respond.js"></script>        
+        <script src="scripts/services/dashboardservice.js"></script>
+        <script src="scripts/services/surveysservice.js"></script>
+        <script src="scripts/services/createservice.js"></script>
+        <script src="scripts/services/respondservice.js"></script>
+        <script src="scripts/services/editservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

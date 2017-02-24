@@ -15,22 +15,44 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('');
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+  .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+    $locationProvider.hashPrefix('');   
+
+    $urlRouterProvider.otherwise('/surveys');    
+
+    $stateProvider
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'dashboard'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .state('surveys', {
+        url: '/surveys',
+        templateUrl: 'views/surveys.html',
+        controller: 'SurveysCtrl',
+        controllerAs: 'surveys'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('surveys.create', {
+        url: '/create',
+        templateUrl: 'views/create.html',
+        controller: 'SurveysCreateCtrl',
+        controllerAs: 'surveysCreate'
+      })
+      .state('surveys.edit', {
+        url: '/:id/edit',
+        templateUrl: 'views/edit.html',
+        controller: 'SurveysEditCtrl',
+        controllerAs: 'surveysEdit'
+      })
+      .state('surveys.respond', {
+        url: '/:id/respond',
+        templateUrl: 'views/respond.html',
+        controller: 'SurveysRespondCtrl',
+        controllerAs: 'surveysRespond'
       });
+
   });
